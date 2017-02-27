@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/squirmy/dojo.svg?branch=master)](https://travis-ci.org/squirmy/dojo)
+
 # dojo
 
 > A Vue.js project
