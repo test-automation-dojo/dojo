@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/squirmy/dojo.svg?branch=master)](https://travis-ci.org/squirmy/dojo)
+[![Build Status](https://travis-ci.org/test-automation-dojo/test-automation-dojo.com.svg?branch=master)](https://travis-ci.org/test-automation-dojo/test-automation-dojo.com)
 
 # Test Automation Dojo
 
