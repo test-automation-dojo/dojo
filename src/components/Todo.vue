@@ -207,8 +207,9 @@ export default {
     });
   },
 
-  beforeRouteLeave() {
+  beforeRouteLeave(to, from, next) {
     window.removeEventListener('hashchange', this.onHashChange);
+    next();
   },
 };
 </script>
