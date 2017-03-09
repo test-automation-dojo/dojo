@@ -1,10 +1,10 @@
 <template>
   <div class="aligner">
     <section class="sign-in">
-      <input type="text" v-model="username" placeholder="username"></input>
-      <input type="password" v-model="password" @keyup.enter="signIn" placeholder="password"></input>
-      <button @click="signIn">Sign in</button>
-      <p :class="{ hidden: !error }">Invalid credentials</p>
+      <input id="username" type="text" v-model="username" placeholder="username"></input>
+      <input id="password" type="password" v-model="password" @keyup.enter="signIn" placeholder="password"></input>
+      <button id="sign-in" @click="signIn">Sign in</button>
+      <p id="error" :class="{ hidden: !error }">Invalid credentials</p>
     </section>
   </div>
 </template>
