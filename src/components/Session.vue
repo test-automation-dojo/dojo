@@ -1,5 +1,5 @@
 <template>
-  <div class="aligner">
+  <div class="container">
     <section class="sign-in">
       <input id="username" type="text" v-model="username" placeholder="username"></input>
       <input id="password" type="password" v-model="password" @keyup.enter="signIn" placeholder="password"></input>
@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style scoped>
-.aligner {
+.container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,6 +51,10 @@ export default {
   display: flex;
   flex-direction: column;
   text-align: center;
+}
+
+#sign-in {
+  margin-top: 20px;
 }
 
 .hidden {
@@ -78,9 +82,31 @@ input:focus {
 }
 
 button {
+  display: inline-block;
   padding: 10px;
-  margin-top: 20px;
-  font-family: sans-serif;
   font-size: 18px;
+  font-family: sans-serif;
+  line-height: 1.8;
+  appearance: none;
+  box-shadow: none;
+  border-radius: 0;
+  color: #fff;
+  background-color: #6496c8;
+  text-shadow: -1px 1px #417cb8;
+  border: none;
+}
+
+button:focus {
+  outline: none
+}
+
+button:hover {
+  background-color: #346392;
+  text-shadow: -1px 1px #27496d;
+}
+
+button:active {
+  background-color: #27496d;
+  text-shadow: -1px 1px #193047;
 }
 </style>
