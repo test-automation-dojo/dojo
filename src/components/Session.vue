@@ -3,7 +3,14 @@
     <section class="sign-in">
       <input id="username" type="text" v-model="username" placeholder="username"></input>
       <input id="password" type="password" v-model="password" @keyup.enter="signIn" placeholder="password"></input>
-      <button id="sign-in" @click="signIn">Sign in</button>
+      <button id="sign-in" @click="signIn">
+        <span v-show="!isSigningIn">Sign in</span>
+        <div v-show="isSigningIn" class="spinner">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+        </div>
+      </button>
       <p id="error" :class="{ hidden: !error }">Invalid credentials</p>
     </section>
   </div>
@@ -18,12 +25,14 @@ export default {
       username: '',
       password: '',
       error: false,
+      isSigningIn: false,
     };
   },
 
   methods: {
     signIn() {
       this.error = false;
+      this.isSigningIn = true;
       const nextPath = this.$router.currentRoute.path.replace(/\/session$/, '');
 
       setTimeout(() => {
@@ -32,6 +41,8 @@ export default {
         } else {
           this.error = true;
         }
+
+        this.isSigningIn = false;
       }, 2000);
     },
   },
@@ -108,5 +119,48 @@ button:hover {
 button:active {
   background-color: #27496d;
   text-shadow: -1px 1px #193047;
+}
+
+.spinner {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 32px;
+}
+
+.spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: #fff;
+
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0) }
+  40% { -webkit-transform: scale(0.7) }
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 40% {
+    -webkit-transform: scale(0.7);
+    transform: scale(0.7);
+  }
 }
 </style>
