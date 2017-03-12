@@ -21,6 +21,17 @@ export default new Router({
         }
       },
     },
-    { path: '/:exercise/session', name: 'session', component: Session },
+    {
+      path: '/:exercise/session',
+      name: 'session',
+      component: Session,
+      beforeEnter: (to, from, next) => {
+        if (session.isSignedIn()) {
+          next(to.params.exercise);
+        } else {
+          next();
+        }
+      },
+    },
   ],
 });

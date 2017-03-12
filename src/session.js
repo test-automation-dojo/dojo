@@ -1,8 +1,15 @@
 import Vue from 'vue';
 
+const STORAGE_KEY = 'dojo-is-signed-in';
 const state = new Vue({
   data: {
-    isSignedIn: false,
+    isSignedIn: JSON.parse(localStorage.getItem(STORAGE_KEY) || 'false'),
+  },
+
+  watch: {
+    isSignedIn(value) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(value));
+    },
   },
 });
 
@@ -12,8 +19,6 @@ export default {
   signIn(username, password) {
     if (username === 'toby' && password === 'ninja') {
       state.isSignedIn = true;
-    } else {
-      state.isSignedIn = false;
     }
 
     return state.isSignedIn;
