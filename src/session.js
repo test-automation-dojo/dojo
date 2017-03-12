@@ -1,8 +1,14 @@
-const state = {
-  isSignedIn: false,
-};
+import Vue from 'vue';
+
+const state = new Vue({
+  data: {
+    isSignedIn: false,
+  },
+});
 
 export default {
+  state,
+
   signIn(username, password) {
     if (username === 'toby' && password === 'ninja') {
       state.isSignedIn = true;
@@ -11,6 +17,10 @@ export default {
     }
 
     return state.isSignedIn;
+  },
+
+  signOut() {
+    state.isSignedIn = false;
   },
 
   isSignedIn() {

@@ -199,17 +199,13 @@ export default {
     },
   },
 
-  beforeRouteEnter(to, from, next) {
-    // handle routing
-    next((vm) => {
-      window.addEventListener('hashchange', vm.onHashChange);
-      vm.onHashChange();
-    });
+  beforeMount() {
+    window.addEventListener('hashchange', this.onHashChange);
+    this.onHashChange();
   },
 
-  beforeRouteLeave(to, from, next) {
+  beforeDestroy() {
     window.removeEventListener('hashchange', this.onHashChange);
-    next();
   },
 };
 </script>

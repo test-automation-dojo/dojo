@@ -33,11 +33,10 @@ export default {
     signIn() {
       this.error = false;
       this.isSigningIn = true;
-      const nextPath = this.$router.currentRoute.path.replace(/\/session$/, '');
 
       setTimeout(() => {
         if (session.signIn(this.username, this.password)) {
-          this.$router.push(nextPath);
+          this.$router.push({ name: this.$route.params.exercise });
         } else {
           this.error = true;
         }
@@ -49,7 +48,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "~@/assets/button";
+
 .container {
   display: flex;
   align-items: center;
@@ -90,35 +91,6 @@ input:focus {
   outline: none;
   border: solid 1px #707070;
   box-shadow: 0 0 5px 1px #969696;
-}
-
-button {
-  display: inline-block;
-  padding: 10px;
-  font-size: 18px;
-  font-family: sans-serif;
-  line-height: 1.8;
-  appearance: none;
-  box-shadow: none;
-  border-radius: 0;
-  color: #fff;
-  background-color: #6496c8;
-  text-shadow: -1px 1px #417cb8;
-  border: none;
-}
-
-button:focus {
-  outline: none
-}
-
-button:hover {
-  background-color: #346392;
-  text-shadow: -1px 1px #27496d;
-}
-
-button:active {
-  background-color: #27496d;
-  text-shadow: -1px 1px #193047;
 }
 
 .spinner {
