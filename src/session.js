@@ -13,11 +13,18 @@ const state = new Vue({
   },
 });
 
+const users = [
+  { username: 'toby', password: 'ninja' },
+  { username: 'kirby', password: 'watermelon' },
+  { username: 'scruff', password: 'icecream' },
+];
+
 export default {
   state,
 
   signIn(username, password) {
-    if (username === 'toby' && password === 'ninja') {
+    const user = users.find(x => x.username === username.toLowerCase());
+    if (user && user.password === password) {
       state.isSignedIn = true;
     }
 
