@@ -420,7 +420,6 @@ export default {
   }
 
   .todo-list li .destroy {
-  	display: none;
   	position: absolute;
   	top: 0;
   	right: 10px;
